@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div class="container h-100" style="max-width: 1080px;">
+    <div class="container vh-100 flex-grow-1" style="border: 1px solid red">
       <header>
         <nav class="navbar">
             <img src="https://www.stickpng.com/img/download/580b57fcd9996e24bc43c51c/image" class="navbar-brand" alt="">
@@ -37,7 +37,7 @@
     <table class="table table-md temporizador-table table-cols-6 table-cell table-borderless" >
       <thead>
         <th colspan="12" >
-        <div class="w-75 rounded " style="display: inline-block; background-color: rgba(255, 165, 0, 0.5);">
+        <div class="w-75 rounded p-2" style="display: inline-block; background-color: rgba(255, 165, 0, 0.5);">
           <h6>Olá, me chamo <b>Leonardo</b>.<br>
             Fiz esse basico gerenciador de construtores para quem tem multiplas contas no clash of clans.<br>
             Chega de ficar se embolando para saber quando um construtor vai liberar em cada conta!<br>
@@ -83,7 +83,6 @@
               <p class="font-weight-bold m-0"> Mins</p>
             </div>
             <input type="number" id="minutos-0" value="0" min="0" max="59" placeholder="MM" class="form-control tempo-input" oninput="validateInput(this, 60)">
-            </div>
           </td>
           <td class="agrupar">
             <div  class="min-md-th-show text-dark dica-dd">
@@ -100,12 +99,10 @@
         </tr>
       </tbody>
     </table>
-  </div>
-    <button class="btn btn-success mais" id="add-temporizador">+</button>
-  </div>
+    <button class="btn btn-success btn-lg rounded-circle mais" id="add-temporizador"><i class="ri-add-line"></i></button>
   <div style="clear: both;"></div>
+  </div>
       <!-- Os timers serão renderizados aqui -->
-    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

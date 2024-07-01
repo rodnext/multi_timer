@@ -23,8 +23,8 @@
   }
   .container {
     background-image: linear-gradient(to right, rgba(255, 250, 184, 0.7), rgba(209, 255, 135, 0.8), rgba(255, 194, 148, 0.7));
-    border-radius: 10px;
-    max-width: 810px;
+    border-radius: 2px;
+    min-height: 1080px;
   }
   .temporizador-table {
     margin-top: 20px;
@@ -107,9 +107,8 @@ table input[type="text"] {
   border-radius: 40px;
 }
    }
-
    .mais{
-    margin: 30px 1px 30px 1px;
+    margin: 30px 1px 50px 1px;
    }
    #temporizadores tr{
     border: 1px solid #b1ffaa;

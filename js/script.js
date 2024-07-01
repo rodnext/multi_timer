@@ -31,7 +31,6 @@ $('#add-temporizador').on('click', function() {
               <p class="font-weight-bold m-0"> Mins</p>
             </div>
             <input type="number" id="minutos-${idTemporizador}" value="0" min="0" max="59" placeholder="MM" class="form-control tempo-input" oninput="validateInput(this, 60)">
-            </div>
           </td>
           <td class="agrupar">
             <div  class="min-md-th-show text-dark dica-dd">
