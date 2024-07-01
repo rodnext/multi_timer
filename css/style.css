@@ -1,0 +1,133 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    text-align: center;
+  }
+  li {
+    text-decoration: none;
+  }
+  input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+  }
+    body, html {
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../img/img-body.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+    nav img{
+    width: 150px;
+  }
+  .container {
+    background-image: linear-gradient(to right, rgba(255, 250, 184, 0.7), rgba(209, 255, 135, 0.8), rgba(255, 194, 148, 0.7));
+    border-radius: 10px;
+    max-width: 810px;
+  }
+  .temporizador-table {
+    margin-top: 20px;
+  }
+  .temporizador-table {
+    background: #a3bd8c;
+    border-radius: 10px;
+  }
+  t[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  }
+  input[type=number] { 
+  -moz-appearance: textfield;
+  appearance: textfield;
+  }
+
+  .table-cols-6 th:not(:first-child), .table-cols-6 td:not(:first-child) {
+    width: calc((100% / 6));
+  }
+
+  @media (min-width: 992px){
+  .agrupar input{
+    min-width: 11vh;
+    
+  } 
+  .min-md-th-show{
+    display: none;
+  }
+table input[type="number"] {
+  border-radius: 10px;
+}
+table input[type="text"] {
+  border-radius: 10px;
+}
+.lock{
+  border-radius: 10px;
+}
+  }
+
+  @media (max-width: 991.98px) { 
+    .min-md-th{
+        display: none;
+      }
+      .min-md-th-show{
+        display: block;
+      }
+      .nome-temp {
+        width: 100%;
+        display: block;
+        margin: 10px 2px 0px 2px;
+      }
+      .table-cols-6 th:first-child, .table-cols-6 td:first-child {
+       width: calc(3 * (100% / 6));
+       width: 90%;
+       min-width: 250px;
+     }
+      .table-cols-6 th:not(:first-child), .table-cols-6 td:not(:first-child) {
+        width: calc((100% / 6));
+        padding: 0;
+        margin: 10px 2px 10px 2px;
+      }
+      .agrupar {
+        display:inline-block;
+      }
+  
+      .agrupar-botao {
+        display: inline;
+      }
+      .btn-group{
+        margin: 33px 2px 20px 2px;
+      }
+      
+table input[type="number"] {
+  border-radius: 40px;
+}
+table input[type="text"] {
+  border-radius: 40px;
+}
+.lock{
+  border-radius: 40px;
+}
+   }
+
+   .mais{
+    margin: 30px 1px 30px 1px;
+   }
+   #temporizadores tr{
+    border: 1px solid #b1ffaa;
+    border-radius: 0px 0px 35px 35px; /* Defina o border-radius desejado */
+    border-top: 1; /* Remova a borda superior para evitar duplicidade */
+   }
+   /* Adicione essa regra CSS para estilizar o botão */
+.btn-secondary {
+  background-color: #f7f7f7; /* Cor de fundo cinza claro */
+  border-color: #f7f7f7; /* Cor da borda cinza claro */
+  color: #333; /* Cor do texto */
+}
+
+.btn-secondary.active {
+  background-color: #333; /* Cor de fundo cinza escuro */
+  border-color: #333; /* Cor da borda cinza escuro */
+  color: #fff; /* Cor do texto */
+}
+.dica-dd{
+  border-radius: 40px;
+}
