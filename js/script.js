@@ -120,7 +120,6 @@ $(`#minutos-${id}`).val(timerValues[id].minutos);
 $(`#horas-${id}`).val(timerValues[id].horas);
 $(`#dias-${id}`).val(timerValues[id].dias);
 
-// quando o contador estiver funcionando irá exibir o btn warning
 if (timerValues[id].segundos > 0 || timerValues[id].minutos > 0  || timerValues[id].horas > 0  || timerValues[id].dias > 0) {
   $(`#iniciar-${id}`).hide();
   $(`#parar-${id}`).show();
