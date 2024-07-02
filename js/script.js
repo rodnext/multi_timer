@@ -2,11 +2,10 @@ let idTemporizador = 0;
 let temporizadores = [];
 let timerValues = {};
 
+
 $('#add-temporizador').on("click", function () {
   idTemporizador++;
   let html = `
-
-  
         <div class="col-lg-4 col-sm-6">
           <div class="card mt-0 mb-3" >
             <div class="input-group mb-3">
@@ -62,12 +61,12 @@ $('#add-temporizador').on("click", function () {
               </div>
             </div>
           </div>
-        </div>
-
   `;
   $('#temporizadores').append(html);
 });
 
+
+//Quando clicado trava o botão de nome da vila
 $(document).on('click', '.lock', function() {
   let id = $(this).data('id');
   let nomeInput = $(`#nome-${id}`);
@@ -76,22 +75,26 @@ $(document).on('click', '.lock', function() {
   $(this).find('i').toggleClass('ri-lock-unlock-line ri-lock-line');
 });
 
+//Define um valor maximo para cada campo imput
 function validateInput(input, maxValue) {
   if (input.value > maxValue) {
     input.value = maxValue;
   }
 }
 
+//Quando clicado esconde o valor do imput
+//Quando sai do campo sem preencher ele retorna a zero
 $(document).on('click', '.tempo-input', function() {
-  $(this).val('');
-  
-$('.tempo-input').on('blur', function() {
-  if ($(this).val() === '') {
-    $(this).val(0);
-  }
-});
+  $(this).val(''); 
+    $('.tempo-input').on('blur', function() {
+      if ($(this).val() === '') {
+        $(this).val(0);
+      }
+    });
 });
 
+//Quando clicado no botão de iniciar inicia o temporizador
+//o botão iniciar é ocultado e aparece o botão parar
 $(document).on('click', '[id^="iniciar-"]', function() {
   let id = $(this).attr('id').replace('iniciar-', '');
   $(`#dias-${id}, #horas-${id}, #minutos-${id}, #segundos-${id}`).prop('readonly', true);
@@ -134,7 +137,8 @@ $(document).on('click', '[id^="iniciar-"]', function() {
   $(`#parar-${id}`).show();
 });
 
-
+//Quando clicado em parar interrompe o temporizador, zera os campos inputs e
+//esconde o botão de parar e libera todos os campos
 $(document).on('click', '[id^="parar-"]', function() {
   let id = $(this).attr('id').replace('parar-', '');
   clearInterval(temporizadores[id]);
@@ -150,6 +154,7 @@ $(document).on('click', '[id^="parar-"]', function() {
   $(`#parar-${id}`).hide();
 });
 
+//Ordena os cards por ordem de menor tempo no temporizador de cada um
 $('#ordenar-tempo').on('click', function() {
   const temporizadores = [];
   $('#temporizadores .col-lg-4').each(function() {

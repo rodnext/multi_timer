@@ -9,25 +9,22 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <!-- INICIO CONTAINER-->
     <div class="container d-flex flex-column">
-      <header>
+
+      <!-- INICIO HEADER-->
+      <header> 
         <nav class="navbar">
-          <img
-            src="https://www.stickpng.com/img/download/580b57fcd9996e24bc43c51c/image"
-            class="navbar-brand"
-            alt=""
-          >
+          <img src="https://www.stickpng.com/img/download/580b57fcd9996e24bc43c51c/image" class="navbar-brand" alt="">
           <form class="form-inline">
-            <button class="btn btn-warning my-2 my-sm-0" type="submit">
-              Login
-            </button>
-            <button class="btn btn-warning my-2 my-sm-0 ml-2" type="submit">
-              Cadastrar
-            </button>
+            <button class="btn btn-warning my-2 my-sm-0" type="submit">Login</button>
+            <button class="btn btn-warning my-2 my-sm-0 ml-2" type="submit">Cadastrar</button>
           </form>
         </nav>
-      </header>
+      </header> 
+      <!-- FIM INICIO HEADER-->
 
+      <!-- INICIO MAIN-->
       <main class="w-75 rounded p-2 mb-4 mx-auto" style="background-color: rgba(255, 165, 0, 0.5)">
         <div class="mb-4">
           <h6>
@@ -49,18 +46,78 @@
           </button>
         </div>
       </main>
+      <!-- FIM MAIN-->
 
+      <!-- INICIO TEMPORIZADORES-->
       <div id="temporizadores" class="row">
-        
-      </div> <!--fim temporizadores-->
+        <div class="col-lg-4 col-sm-6">
+          <div class="card mt-0 mb-3" >
+            <div class="input-group mb-3">
+              <input type="text" id="nome-0" value="" placeholder="Nome da sua vila" class="form-control nome-input">
+              <div class="input-group-append">
+                <button class="btn btn-secondary lock" data-id="0"><i class="ri-lock-unlock-line"></i></button>
+              </div>
+            </div>
 
+
+            <div class="row align-items-center text-dark ">
+              <div class="agrupar col-lg-2 col-sm-6 col-2">
+                  <div class="form-group ">
+                    <p class="font-weight-bold m-1 small-text"> Dias</p>
+                  <input type="number" id="dias-0" value="0" min="0" placeholder="DD" class="form-control tempo-input larger-input" oninput="validateInput(this, 30)">
+                </div>
+              </div>
+
+              <div class="agrupar  col-lg-2 col-sm-6 col-2">
+                  <div  class="form-group">
+                    <p class="font-weight-bold m-1 small-text"> Hrs</p>
+                  <input type="number" id="horas-0" value="0" min="0" max="23" placeholder="HH" class="form-control tempo-input larger-input" oninput="validateInput(this, 24)">
+                </div>
+              </div>
+
+              <div class="agrupar  col-lg-2 col-sm-6 col-2">
+                  <div class="form-group">
+                    <p class="font-weight-bold m-1 small-text"> Mins</p>
+                  <input type="number" id="minutos-0" value="0" min="0" max="59" placeholder="MM" class="form-control tempo-input larger-input" oninput="validateInput(this, 60)">
+                </div>
+              </div>
+              <div class="agrupar  col-lg-2 col-sm-6 col-2">
+                  <div  class="form-group">
+                    <p class="font-weight-bold m-1 small-text"> Segs</p>
+                  <input type="number" id="segundos-0" value="0" min="0" max="59" placeholder="SS" class="form-control tempo-input larger-input" oninput="validateInput(this, 60)">
+                </div>
+              </div>
+
+                <div class="agrupar-botao btn-group mt-1 col-lg-2 col-md col-sm col-2 justify-content-center" >
+
+                  <div  class="form-group" id="iniciar-0">
+                    <p class="font-weight-bold mb-1 small-text">Iniciar</p>
+                    <button class="font-weight-bold btn btn-warning btn-lg rounded-circle"><i class="ri-play-fill"></i></button>
+                  </div>
+
+                  <div  class="form-group" id="parar-0" style="display: none;">
+                      <p class="font-weight-bold mb-1 small-text">Parar</p>
+                    <button class="font-weight-bold btn btn-danger btn-lg rounded-circle"><i class="ri-stop-fill"></i></button>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        <!-- CADA TEMPORIZADOR APARECERÁ AQUI-->
+      </div>
+      <!-- FIM TEMPORIZADORES-->
+
+      <!-- BOTAO DE ADICIONAR MAIS CARDS-->
       <div class="d-flex justify-content-center">
         <button type="button" class="btn btn-success btn-lg mais" id="add-temporizador">
           <i class="ri-add-line"></i>
         </button>
       </div>
-      <div style="clear: both"></div>
-     <footer> &copy; Todos os direitos reservados. </footer>
+      <!-- FIM DO BOTAO DE ADICIONAR MAIS CARDS-->
+      <!-- FIM CONTAINER -->
+     <footer style="clear: both"> &copy; Todos os direitos reservados. </footer>
     </div>
     <!-- FIM CONTAINER -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

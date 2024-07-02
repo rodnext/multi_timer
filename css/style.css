@@ -1,3 +1,4 @@
+/*--------------GERAIS-------------*/
 * {
   margin: 0;
   padding: 0;
@@ -23,36 +24,70 @@ html {
   background-size: cover;
   background-attachment: fixed;
 }
+.small-text {
+  font-size: 12px;
+}
+/*--------------GERAIS-------------*/
+/*--------------NAV-------------*/
 nav img {
   width: 150px;
 }
-.container-md {
-  border-radius: 2px;
-  min-height: 1080px;
+.navbar-brand, .form-inline {
+  margin: 0 auto;
 }
-.temporizador-table {
-  margin-top: 20px;
+/*--------------NAV-------------*/
+/*--------------MAIN-------------*/
+.btn-secondary {
+  background-color: #f7f7f7;
+  border-color: #f7f7f7;
+  color: #333;
 }
-.bg-thead,
-tr {
+.btn-secondary.active {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+.card {
   background: #a3bd8c;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
 }
-t[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+.agrupar {
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 1px 0 0 1px;
+}
+.agrupar input {
+  min-width: 5vh;
 }
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
-
-.table-cols-6 th:not(:first-child),
-.table-cols-6 td:not(:first-child) {
-  width: calc((100% / 6));
+.larger-input {
+  height: 50px;
+  font-size: 18px;
 }
-.agrupar input {
-  min-width: 5vh;
+.tempo-input {
+  border: none;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  font-size: 24px;
+  text-shadow: black;
+  font-weight: bold;
 }
-
+.form-group {
+  margin-bottom: 15px;
+}
+.mais {
+  margin: 30px 1px 50px 1px;
+}
+/*--------------MAIN-------------*/
+/*--------------FOOTER-------------*/
+/*--------------FOOTER-------------*/
+/*--------------MEDIA-------------*/
 @media (min-width: 992px) {
   .agrupar input {
     min-width: 5vh;
@@ -82,52 +117,4 @@ input[type="number"] {
     min-width: 330px;
   }
 }
-
-
-.navbar-brand, .form-inline {
-  margin: 0 auto;
-}
-.mais {
-  margin: 30px 1px 50px 1px;
-}
-.btn-secondary {
-  background-color: #f7f7f7;
-  border-color: #f7f7f7;
-  color: #333;
-}
-.btn-secondary.active {
-  background-color: #333;
-  border-color: #333;
-  color: #fff;
-}
-.card {
-  background: #a3bd8c;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 10px;
-}
-.larger-input {
-  height: 50px;
-  font-size: 18px;
-}
-.tempo-input {
-  border: none; /* remove border */
-  width: 100%; /* make input field take up full width */
-  text-align: center; /* center the text */
-  padding: 0; /* remove padding */
-  font-size: 24px; /* adjust font size to your liking */
-  text-shadow: black;
-  font-weight: bold;
-}
-.small-text {
-  font-size: 12px;
-}
-.agrupar {
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 1px 0 0 1px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
+/*--------------MEDIA-------------*/
