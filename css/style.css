@@ -96,24 +96,30 @@ table input[type="text"] {
       .btn-group{
         margin: 33px 2px 20px 2px;
       }
-      
-table input[type="number"] {
-  border-radius: 40px;
-}
-table input[type="text"] {
-  border-radius: 40px;
-}
-.lock{
-  border-radius: 40px;
-}
+      .navbar-brand, .form-inline{
+        margin: 0 auto;
+      }
+          
+    table input[type="number"] {
+      border-radius: 40px;
+    }
+    table input[type="text"] {
+      border-radius: 40px;
+    }
+    .lock{
+      border-radius: 40px;
+    }
    }
    .mais{
     margin: 30px 1px 50px 1px;
    }
-   #temporizadores tr{
+   #temporizadores tr:not(.spacer-row){
     border: 1px solid #b1ffaa;
     border-radius: 0px 0px 35px 35px;
     border-top: 1;
+   }
+   #temporizadores .spacer-row, .espaco-row{
+    background: transparent!;
    }
 .btn-secondary {
   background-color: #f7f7f7;

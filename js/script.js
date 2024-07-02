@@ -5,7 +5,10 @@ let timerValues = {};
 $('#add-temporizador').on('click', function() {
   idTemporizador++;
   let html = `
-    <tr>
+        <tr class="spacer-row bg-transparent bg-none">
+            <td colspan="7" style="height: 20px;"></td> <!-- Colspan para ocupar todas as colunas -->
+          </tr>
+        <tr>
           <td class="nome-temp mx-auto col-12">
             <div class="input-group">
               <input type="text" id="nome-${idTemporizador}" value="" placeholder="Nome da sua vila" class="form-control nome-input">
@@ -62,110 +65,88 @@ $(document).on('click', '.lock', function() {
   }
 });
 
-      function validateInput(input, maxValue) {
+function validateInput(input, maxValue) {
   if (input.value > maxValue) {
       input.value = maxValue;
   }
-  }
+}
 
 $(document).on('click', '[id^="iniciar-"]', function() {
-let id = $(this).attr('id').replace('iniciar-', '');
-$(`#dias-${id}`).prop('readonly', true);
-$(`#horas-${id}`).prop('readonly', true);
-$(`#minutos-${id}`).prop('readonly', true);
-$(`#segundos-${id}`).prop('readonly', true);
+  let id = $(this).attr('id').replace('iniciar-', '');
+  $(`#dias-${id}`).prop('readonly', true);
+  $(`#horas-${id}`).prop('readonly', true);
+  $(`#minutos-${id}`).prop('readonly', true);
+  $(`#segundos-${id}`).prop('readonly', true);
 
-timerValues[id] = {
-dias: parseInt($(`#dias-${id}`).val()),
-horas: parseInt($(`#horas-${id}`).val()),
-minutos: parseInt($(`#minutos-${id}`).val()),
-segundos: parseInt($(`#segundos-${id}`).val())
-};
+  const dias = parseInt($(`#dias-${id}`).val());
+  const horas = parseInt($(`#horas-${id}`).val());
+  const minutos = parseInt($(`#minutos-${id}`).val());
+  const segundos = parseInt($(`#segundos-${id}`).val());
 
-temporizadores[id] = setInterval(function() {
-timerValues[id].segundos--;
-if (timerValues[id].segundos < 0) {
-timerValues[id].segundos = 59;
-timerValues[id].minutos--;
-if (timerValues[id].minutos < 0) {
-  timerValues[id].minutos = 59;
-  timerValues[id].horas--;
-  if (timerValues[id].horas < 0) {
-    timerValues[id].horas = 23;
-    timerValues[id].dias--;
-    if (timerValues[id].dias < 0) {
+  const endTime = Date.now() + dias * 86400000 + horas * 3600000 + minutos * 60000 + segundos * 1000;
+
+  temporizadores[id] = setInterval(function() {
+    const now = Date.now();
+    const timeLeft = endTime - now;
+
+    if (timeLeft <= 0) {
       clearInterval(temporizadores[id]);
-      $(`#dias-${id}`).prop('readonly', false);
-      $(`#horas-${id}`).prop('readonly', false);
-      $(`#minutos-${id}`).prop('readonly', false);
-      $(`#segundos-${id}`).prop('readonly', false);
       $(`#dias-${id}`).val(0);
       $(`#horas-${id}`).val(0);
       $(`#minutos-${id}`).val(0);
       $(`#segundos-${id}`).val(0);
-      timerValues[id] = {
-          dias: 0,
-          horas: 0,
-          minutos: 0,
-          segundos: 0
-      };
-      $(`#iniciar-${id}`).removeClass('btn-danger').addClass('btn-warning');
+      $(`#iniciar-${id}`).show();
+      $(`#parar-${id}`).hide();
+      return;
     }
-  }
-}
-}
-$(`#segundos-${id}`).val(timerValues[id].segundos);
-$(`#minutos-${id}`).val(timerValues[id].minutos);
-$(`#horas-${id}`).val(timerValues[id].horas);
-$(`#dias-${id}`).val(timerValues[id].dias);
 
-if (timerValues[id].segundos > 0 || timerValues[id].minutos > 0  || timerValues[id].horas > 0  || timerValues[id].dias > 0) {
-  $(`#iniciar-${id}`).hide();
-  $(`#parar-${id}`).show();
-} else {
-  $(`#iniciar-${id}`).show();
-  $(`#parar-${id}`).hide();
-}
-}, 1000);
+    const days = Math.floor(timeLeft / 86400000);
+    const hours = Math.floor((timeLeft % 86400000) / 3600000);
+    const minutes = Math.floor((timeLeft % 3600000) / 60000);
+    const seconds = Math.floor((timeLeft % 60000) / 1000);
+
+    $(`#dias-${id}`).val(days);
+    $(`#horas-${id}`).val(hours);
+    $(`#minutos-${id}`).val(minutes);
+    $(`#segundos-${id}`).val(seconds);
+
+    $(`#iniciar-${id}`).hide();
+    $(`#parar-${id}`).show();
+  }, 1000);
 });
 
 $(document).on('click', '[id^="parar-"]', function() {
-let id = $(this).attr('id').replace('parar-', '');
-$(`#dias-${id}`).prop('readonly', false);
-$(`#horas-${id}`).prop('readonly', false);
-$(`#minutos-${id}`).prop('readonly', false);
-$(`#segundos-${id}`).prop('readonly', false);
-$(`#dias-${id}`).val(0);
-$(`#horas-${id}`).val(0);
-$(`#minutos-${id}`).val(0);
-$(`#segundos-${id}`).val(0);
-timerValues[id] = {
-dias: 0,
-horas: 0,
-minutos: 0,
-segundos: 0
-};
-
-$(`#iniciar-${id}`).removeClass('btn-danger').addClass('btn-warning');
+  let id = $(this).attr('id').replace('parar-', '');
+  clearInterval(temporizadores[id]);
+  $(`#dias-${id}`).prop('readonly', false);
+  $(`#horas-${id}`).prop('readonly', false);
+  $(`#minutos-${id}`).prop('readonly', false);
+  $(`#segundos-${id}`).prop('readonly', false);
+  $(`#dias-${id}`).val(0);
+  $(`#horas-${id}`).val(0);
+  $(`#minutos-${id}`).val(0);
+  $(`#segundos-${id}`).val(0);
+  $(`#iniciar-${id}`).show();
+  $(`#parar-${id}`).hide();
 });
 
 $('#ordenar-tempo').on('click', function() {
-const temporizadores = [];
-$('#temporizadores tr').each(function() {
-const id = $(this).find('td:eq(0) input').attr('id').replace('nome-', '');
-const dias = parseInt($(`#dias-${id}`).val());
-const horas = parseInt($(`#horas-${id}`).val());
-const minutos = parseInt($(`#minutos-${id}`).val());
-const segundos = parseInt($(`#segundos-${id}`).val());
-const tempoTotal = dias * 86400 + horas * 3600 + minutos * 60 + segundos;
-temporizadores.push({ id, tempoTotal, tr: $(this) });
-});
+  const temporizadores = [];
+  $('#temporizadores tr').each(function() {
+    const id = $(this).find('td:eq(0) input').attr('id').replace('nome-', '');
+    const dias = parseInt($(`#dias-${id}`).val());
+    const horas = parseInt($(`#horas-${id}`).val());
+    const minutos = parseInt($(`#minutos-${id}`).val());
+    const segundos = parseInt($(`#segundos-${id}`).val());
+    const tempoTotal = dias * 86400 + horas * 3600 + minutos * 60 + segundos;
+    temporizadores.push({ id, tempoTotal, tr: $(this) });
+  });
 
-temporizadores.sort((a, b) => a.tempoTotal - b.tempoTotal);
+  temporizadores.sort((a, b) => a.tempoTotal - b.tempoTotal);
 
-const tbody = $('#temporizadores');
-tbody.html('');
-temporizadores.forEach((temporizador) => {
-tbody.append(temporizador.tr);
-});
+  const tbody = $('#temporizadores');
+  tbody.html('');
+  temporizadores.forEach((temporizador) => {
+    tbody.append(temporizador.tr);
+  });
 });
