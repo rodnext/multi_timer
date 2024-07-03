@@ -2,7 +2,6 @@ let idTemporizador = 0;
 let temporizadores = [];
 let timerValues = {};
 
-
 $('#add-temporizador').on("click", function () {
   idTemporizador++;
   let html = `
@@ -14,8 +13,6 @@ $('#add-temporizador').on("click", function () {
                 <button class="btn btn-secondary lock" data-id="${idTemporizador}"><i class="ri-lock-unlock-line"></i></button>
               </div>
             </div>
-
-
             <div class="row align-items-center text-dark ">
               <div class="agrupar col-lg-2 col-sm-6 col-2">
                   <div class="form-group ">
@@ -23,14 +20,12 @@ $('#add-temporizador').on("click", function () {
                   <input type="number" id="dias-${idTemporizador}" value="0" min="0" placeholder="DD" class="form-control tempo-input larger-input" oninput="validateInput(this, 30)">
                 </div>
               </div>
-
               <div class="agrupar  col-lg-2 col-sm-6 col-2">
                   <div  class="form-group">
                     <p class="font-weight-bold m-1 small-text"> Hrs</p>
                   <input type="number" id="horas-${idTemporizador}" value="0" min="0" max="23" placeholder="HH" class="form-control tempo-input larger-input" oninput="validateInput(this, 24)">
                 </div>
               </div>
-
               <div class="agrupar  col-lg-2 col-sm-6 col-2">
                   <div class="form-group">
                     <p class="font-weight-bold m-1 small-text"> Mins</p>
@@ -43,21 +38,16 @@ $('#add-temporizador').on("click", function () {
                   <input type="number" id="segundos-${idTemporizador}" value="0" min="0" max="59" placeholder="SS" class="form-control tempo-input larger-input" oninput="validateInput(this, 60)">
                 </div>
               </div>
-
                 <div class="agrupar-botao btn-group mt-1 col-lg-2 col-md col-sm col-2 justify-content-center" >
-
                   <div  class="form-group" id="iniciar-${idTemporizador}">
                     <p class="font-weight-bold mb-1 small-text">Iniciar</p>
                     <button class="font-weight-bold btn btn-warning btn-lg rounded-circle"><i class="ri-play-fill"></i></button>
                   </div>
-
                   <div  class="form-group" id="parar-${idTemporizador}" style="display: none;">
                       <p class="font-weight-bold mb-1 small-text">Parar</p>
                     <button class="font-weight-bold btn btn-danger btn-lg rounded-circle"><i class="ri-stop-fill"></i></button>
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -82,8 +72,8 @@ function validateInput(input, maxValue) {
   }
 }
 
-//Quando clicado esconde o valor do imput
-//Quando sai do campo sem preencher ele retorna a zero
+/*Quando clicado esconde o valor do imput
+Quando sai do campo sem preencher ele retorna a zero*/
 $(document).on('click', '.tempo-input', function() {
   $(this).val(''); 
     $('.tempo-input').on('blur', function() {
@@ -93,59 +83,52 @@ $(document).on('click', '.tempo-input', function() {
     });
 });
 
-//Quando clicado no botão de iniciar inicia o temporizador
-//o botão iniciar é ocultado e aparece o botão parar
+/*Quando clicado no botão de iniciar inicia o temporizador
+o botão iniciar é ocultado e aparece o botão parar*/
 $(document).on('click', '[id^="iniciar-"]', function() {
   let id = $(this).attr('id').replace('iniciar-', '');
   $(`#dias-${id}, #horas-${id}, #minutos-${id}, #segundos-${id}`).prop('readonly', true);
 
-  timerValues[id] = {
-    dias: parseInt($(`#dias-${id}`).val()),
-    horas: parseInt($(`#horas-${id}`).val()),
-    minutos: parseInt($(`#minutos-${id}`).val()),
-    segundos: parseInt($(`#segundos-${id}`).val())
-  };
+  const dias = parseInt($(`#dias-${id}`).val());
+  const horas = parseInt($(`#horas-${id}`).val());
+  const minutos = parseInt($(`#minutos-${id}`).val());
+  const segundos = parseInt($(`#segundos-${id}`).val());
+
+  const totalTimeInSeconds = dias * 86400 + horas * 3600 + minutos * 60 + segundos;
+  const startTime = Date.now();
 
   temporizadores[id] = setInterval(function() {
-    timerValues[id].segundos--;
-    if (timerValues[id].segundos < 0) {
-      timerValues[id].segundos = 59;
-      timerValues[id].minutos--;
-      if (timerValues[id].minutos < 0) {
-        timerValues[id].minutos = 59;
-        timerValues[id].horas--;
-        if (timerValues[id].horas < 0) {
-          timerValues[id].horas = 23;
-          timerValues[id].dias--;
-          if (timerValues[id].dias < 0) {
-            clearInterval(temporizadores[id]);
-            $(`#dias-${id}, #horas-${id}, #minutos-${id}, #segundos-${id}`).prop('readonly', false).val(0);
-            timerValues[id] = { dias: 0, horas: 0, minutos: 0, segundos: 0 };
-            $(`#iniciar-${id}`).show();
-            $(`#parar-${id}`).hide();
-          }
-        }
-      }
+    const elapsedTimeInSeconds = Math.floor((Date.now() - startTime) / 1000);
+    const remainingTimeInSeconds = totalTimeInSeconds - elapsedTimeInSeconds;
+
+    if (remainingTimeInSeconds <= 0) {
+      clearInterval(temporizadores[id]);
+      $(`#dias-${id}, #horas-${id}, #minutos-${id}, #segundos-${id}`).prop('readonly', false).val(0);
+      $(`#iniciar-${id}`).show();
+      $(`#parar-${id}`).hide();
+    } else {
+      const remainingDias = Math.floor(remainingTimeInSeconds / 86400);
+      const remainingHrs = Math.floor((remainingTimeInSeconds % 86400) / 3600);
+      const remainingMins = Math.floor((remainingTimeInSeconds % 3600) / 60);
+      const remainingSecs = remainingTimeInSeconds % 60;
+
+      $(`#dias-${id}`).val(remainingDias);
+      $(`#horas-${id}`).val(remainingHrs);
+      $(`#minutos-${id}`).val(remainingMins);
+      $(`#segundos-${id}`).val(remainingSecs);
     }
-    $(`#dias-${id}`).val(timerValues[id].dias);
-    $(`#horas-${id}`).val(timerValues[id].horas);
-    $(`#minutos-${id}`).val(timerValues[id].minutos);
-    $(`#segundos-${id}`).val(timerValues[id].segundos);
   }, 1000);
-  
+
   $(this).hide();
   $(`#parar-${id}`).show();
 });
 
-//Quando clicado em parar interrompe o temporizador, zera os campos inputs e
-//esconde o botão de parar e libera todos os campos
+/*Quando clicado em parar interrompe o temporizador, zera os campos inputs e
+esconde o botão de parar e libera todos os campos*/
 $(document).on('click', '[id^="parar-"]', function() {
   let id = $(this).attr('id').replace('parar-', '');
   clearInterval(temporizadores[id]);
-  $(`#dias-${id}`).prop('readonly', false);
-  $(`#horas-${id}`).prop('readonly', false);
-  $(`#minutos-${id}`).prop('readonly', false);
-  $(`#segundos-${id}`).prop('readonly', false);
+  $(`#dias-${id}, #horas-${id}, #minutos-${id}, #segundos-${id}`).prop('readonly', false);
   $(`#dias-${id}`).val(0);
   $(`#horas-${id}`).val(0);
   $(`#minutos-${id}`).val(0);
