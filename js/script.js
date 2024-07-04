@@ -2,6 +2,7 @@ let idTemporizador = 0;
 let temporizadores = [];
 let timerValues = {};
 
+
 $('#add-temporizador').on("click", function () {
   idTemporizador++;
   let html = `
@@ -156,4 +157,28 @@ $('#ordenar-tempo').on('click', function() {
   temporizadores.forEach((temporizador) => {
     $('#temporizadores').append(temporizador.element);
   });
+});
+//~~~~~~~~~~~~~~~~~~~~~~ TESTE
+
+document.addEventListener("DOMContentLoaded", function() {
+  var sidebar = document.getElementById("sidebar");
+  var sidebarToggle = document.getElementById("sidebarToggle");
+
+  function toggleSidebar() {
+      sidebar.classList.toggle("collapsed");
+  }
+
+  function checkWindowSize() {
+      if (window.innerWidth < 992) {
+          sidebar.classList.add("collapsed");
+      } else {
+          sidebar.classList.remove("collapsed");
+      }
+  }
+
+  sidebarToggle.addEventListener("click", toggleSidebar);
+  window.addEventListener("resize", checkWindowSize);
+
+  // Verifica o tamanho da janela ao carregar a página
+  checkWindowSize();
 });

@@ -28,24 +28,99 @@ html {
   font-size: 12px;
 }
 /*--------------GERAIS-------------*/
-/*--------------NAV-------------*/
-nav img {
-  width: 150px;
+/*--------------MENU-------------*/
+.sidebar-header img {
+  width: 50px;
 }
-.navbar-brand, .form-inline {
-  margin: 0 auto;
+body {
+  font-family: Arial, sans-serif;
 }
-/*--------------NAV-------------*/
+.bg-menu{
+  height: 100%;
+  background-image: linear-gradient(
+      to right,
+      rgba(126, 126, 126, 1),
+      rgba(192, 192, 192, 1),
+      rgba(255, 238, 238, 1)
+    );
+}
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: width 0.3s, margin-left 0.3s;
+  z-index: 1000; 
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.sidebar .logo {
+  max-height: 30px;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: black;
+}
+.sidebar .nav-link:hover {
+  color: white;
+}
+
+.sidebar .nav-link .link-text {
+  margin-left: 10px;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.collapsed .link-text{
+  display: none;
+}
+
+.sidebar.collapsed .logo {
+  display: none;
+}
+.sidebar.collapsed .nav-link i, .sidebar.collapsed .sidebar-header i {
+  font-size: 20px;
+}
+.sidebar.collapsed .sidebar-header{
+  font-size: 20px;
+  justify-content: center;
+}
+.sidebar.collapsed .login-cad-menu {
+    display: none;
+}
+.sidebar .login-cad-menu {
+  margin-left: 10px;
+}
+.nav-item a:hover{
+  background: #2c5c00;
+}
+.sidebar.collapsed a{
+  justify-content: center;
+}
+/*--------------MENU-------------*/
 /*--------------MAIN-------------*/
-.btn-secondary {
-  background-color: #f7f7f7;
-  border-color: #f7f7f7;
-  color: #333;
+.content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.3s;
 }
-.btn-secondary.active {
-  background-color: #333;
-  border-color: #333;
-  color: #fff;
+
+.collapsed + .content {
+  margin-left: 80px;
 }
 .card {
   background: #a3bd8c;
@@ -84,25 +159,22 @@ input[type="number"] {
 .mais {
   margin: 30px 1px 50px 1px;
 }
+.btn-new-timer{
+  background: #2c5c00;
+  color: white;
+}
+.btn-ordem-timer{
+  background: #2c5c00;
+  color: #fff;
+}
 /*--------------MAIN-------------*/
 /*--------------FOOTER-------------*/
 /*--------------FOOTER-------------*/
-/*--------------MEDIA-------------*/
-@media (min-width: 992px) {
-  .agrupar input {
-    min-width: 5vh;
-  }
-  table input[type="number"],table input[type="text"] {
-    border-radius: 10px;
-  }
-  .lock {
-    border-radius: 10px;
-  }
-  .agrupar-botao{
-    margin: 0 auto;
-  }
-}
 
+/*--------------TESTE-------------*/
+
+
+/*--------------MEDIA-------------*/
 @media (max-width: 991.98px) {
   .lock {
     border-radius: 10px;
@@ -110,8 +182,30 @@ input[type="number"] {
   .agrupar-botao{
     margin: 0 auto;
   }
-
+  .sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  transition: width 0.3s, margin-left 0.3s;
+  }
+  .sidebar.collapsed {
+    left: 0;
+  }
+  .sidebar.collapsed .link-text {
+    display: none;
+  }
+  .sidebar .logo {
+    display: inline;
+  }
+  .sidebar.collapsed {
+    display: inline;
+  }
+  .content {
+    margin-left: 80px;
+  }
 }
+
 @media (max-width: 575.98px) {
   .container{
     min-width: 330px;
