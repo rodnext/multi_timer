@@ -6,52 +6,61 @@ let timerValues = {};
 $('#add-temporizador').on("click", function () {
   idTemporizador++;
   let html = `
-        <div class="col-lg-4 col-sm-6">
-          <div class="card mt-0 mb-3" >
-            <div class="input-group mb-3">
-              <input type="text" id="nome-${idTemporizador}" value="" placeholder="Nome da sua vila" class="form-control nome-input">
+
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 p-1">
+          <div class="card p-1 card-size" >
+            <div class="input-group">
+              <input type="text" id="nome-${idTemporizador}" value="" placeholder="Nome da sua vila" class="font-weight-bold form-control form-control-sm nome-input">
               <div class="input-group-append">
-                <button class="btn btn-secondary lock" data-id="${idTemporizador}"><i class="ri-lock-unlock-line"></i></button>
+                <button class="btn btn-secondary btn-sm lock" data-id="${idTemporizador}"><i class="ri-lock-unlock-line"></i></button>
               </div>
             </div>
-            <div class="row align-items-center text-dark ">
-              <div class="agrupar col-lg-2 col-sm-6 col-2">
-                  <div class="form-group ">
-                    <p class="font-weight-bold m-1 small-text"> Dias</p>
+            
+            <div class="row align-items-center text-dark mx-auto align-items-center">
+              <div class="agrupar">
+                  <div class="form-group">
+                    <p class="font-weight-bold m-1 small-text"> D</p>
                   <input type="number" id="dias-${idTemporizador}" value="0" min="0" placeholder="DD" class="form-control tempo-input larger-input" oninput="validateInput(this, 30)">
                 </div>
               </div>
-              <div class="agrupar  col-lg-2 col-sm-6 col-2">
+
+              <div class="agrupar">
                   <div  class="form-group">
-                    <p class="font-weight-bold m-1 small-text"> Hrs</p>
+                    <p class="font-weight-bold m-1 small-text"> H</p>
                   <input type="number" id="horas-${idTemporizador}" value="0" min="0" max="23" placeholder="HH" class="form-control tempo-input larger-input" oninput="validateInput(this, 24)">
                 </div>
               </div>
-              <div class="agrupar  col-lg-2 col-sm-6 col-2">
+
+              <div class="agrupar">
                   <div class="form-group">
-                    <p class="font-weight-bold m-1 small-text"> Mins</p>
+                    <p class="font-weight-bold m-1 small-text"> M</p>
                   <input type="number" id="minutos-${idTemporizador}" value="0" min="0" max="59" placeholder="MM" class="form-control tempo-input larger-input" oninput="validateInput(this, 60)">
                 </div>
               </div>
-              <div class="agrupar  col-lg-2 col-sm-6 col-2">
+              <div class="agrupar">
                   <div  class="form-group">
-                    <p class="font-weight-bold m-1 small-text"> Segs</p>
+                    <p class="font-weight-bold m-1 small-text"> S</p>
                   <input type="number" id="segundos-${idTemporizador}" value="0" min="0" max="59" placeholder="SS" class="form-control tempo-input larger-input" oninput="validateInput(this, 60)">
                 </div>
               </div>
-                <div class="agrupar-botao btn-group mt-1 col-lg-2 col-md col-sm col-2 justify-content-center" >
+
+                <div class="agrupar-botao btn-group mt-1 justify-content-center" >
+
                   <div  class="form-group" id="iniciar-${idTemporizador}">
                     <p class="font-weight-bold mb-1 small-text">Iniciar</p>
-                    <button class="font-weight-bold btn btn-warning btn-lg rounded-circle"><i class="ri-play-fill"></i></button>
+                    <button class="font-weight-bold btn btn-warning btn-sm rounded-circle"><i class="ri-play-fill"></i></button>
                   </div>
-                  <div  class="form-group" id="parar-${idTemporizador}" style="display: none;">
-                      <p class="font-weight-bold mb-1 small-text">Parar</p>
-                    <button class="font-weight-bold btn btn-danger btn-lg rounded-circle"><i class="ri-stop-fill"></i></button>
+
+                  <div class="form-group" id="parar-${idTemporizador}" style="display: none;">
+                    <p class="font-weight-bold mb-1 small-text">Parar</p>
+                    <button class="font-weight-bold btn btn-danger btn-sm rounded-circle"><i class="ri-stop-fill"></i></button>
                   </div>
+
                 </div>
               </div>
             </div>
           </div>
+
   `;
   $('#temporizadores').append(html);
 });
@@ -76,13 +85,15 @@ function validateInput(input, maxValue) {
 /*Quando clicado esconde o valor do imput
 Quando sai do campo sem preencher ele retorna a zero*/
 $(document).on('click', '.tempo-input', function() {
-  $(this).val(''); 
+  $(this).val('s'); 
     $('.tempo-input').on('blur', function() {
       if ($(this).val() === '') {
         $(this).val(0);
       }
     });
 });
+
+
 
 /*Quando clicado no botão de iniciar inicia o temporizador
 o botão iniciar é ocultado e aparece o botão parar*/
@@ -163,6 +174,7 @@ $('#ordenar-tempo').on('click', function() {
 document.addEventListener("DOMContentLoaded", function() {
   var sidebar = document.getElementById("sidebar");
   var sidebarToggle = document.getElementById("sidebarToggle");
+  var overlay = document.getElementById("overlay");
 
   function toggleSidebar() {
       sidebar.classList.toggle("collapsed");
@@ -182,3 +194,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // Verifica o tamanho da janela ao carregar a página
   checkWindowSize();
 });
+
+
+
+
+//~~~~~~~~~~~~~~~~~~~teste~~~~~~~~~~~~~~
