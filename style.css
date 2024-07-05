@@ -20,7 +20,7 @@ html {
       rgba(209, 255, 135, 0.8),
       rgba(255, 194, 148, 0.7)
     ),
-    url("../img/img-body.jpg");
+    url("img/img-body.jpg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
