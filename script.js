@@ -94,7 +94,6 @@ $(document).on('click', '.tempo-input', function() {
 });
 
 
-
 /*Quando clicado no botão de iniciar inicia o temporizador
 o botão iniciar é ocultado e aparece o botão parar*/
 $(document).on('click', '[id^="iniciar-"]', function() {
@@ -169,7 +168,6 @@ $('#ordenar-tempo').on('click', function() {
     $('#temporizadores').append(temporizador.element);
   });
 });
-//~~~~~~~~~~~~~~~~~~~~~~ TESTE
 
 document.addEventListener("DOMContentLoaded", function() {
   var sidebar = document.getElementById("sidebar");
@@ -195,7 +193,3 @@ document.addEventListener("DOMContentLoaded", function() {
   checkWindowSize();
 });
 
-
-
-
-//~~~~~~~~~~~~~~~~~~~teste~~~~~~~~~~~~~~
