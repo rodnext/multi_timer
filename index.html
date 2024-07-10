@@ -21,6 +21,7 @@
         <div class="sidebar-header">
             <button class="btn btn-hamburguer" id="sidebarToggle"><i class="ri-menu-line"></i></button>
             <img src="img/pngwing.com.png" alt="Logo" class="logo">
+            <button class="btn btn-dark-mode" id="darkModeToggle"><i class="ri-moon-line"></i></button>
         </div>
         <ul class="nav flex-column"><!--
             <li class="nav-item">
@@ -34,7 +35,6 @@
                 <a  class="nav-link" href="#"><i class="ri-user-add-line"></i> <span class="login-cad-menu">Cadastrar</span></a>
               </li>
               <br>
-              <span class="text-white">_______</span>
             </form>
 
 
@@ -47,23 +47,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="ri-thumb-up-line"></i><span class="link-text">Feedback</span></a>
             </li>
-            <!--
-          <div class="w-75 rounded mt-4 p-2 mb-4 mx-auto sobre-menu" style="background-color: rgba(255, 165, 0, 0.5)">
-            <div class="mb-4">
-              <h6>
-                Olá, me chamo <b>Leonardo</b>.<br >
-                Fiz esse básico gerenciador de construtores para quem tem múltiplas
-                contas no Clash of Clans.<br >
-                Chega de ficar se embolando para saber quando um construtor vai
-                liberar em cada conta!<br >
-                Aqui você pode colocar o nome da sua vila e colocar o construtor com
-                menor tempo, assim você vai saber quando vai poder entrar na sua
-                vila e colocar algo para melhorar... logo mais terá acesso com login
-                para salvar suas vilas e horas e o contador continuará mesmo com a
-                página fechada. <b>Aproveite!</b>
-              </h6>
-            </div>
-          </div>-->
         </ul>
     </div>
       <!-- FIM INICIO HEADER-->
@@ -82,16 +65,17 @@
       <!-- FIM DO BOTAO DE ADICIONAR MAIS CARDS E ORGANIZAR VILAS-->
       <!-- INICIO TEMPORIZADORES-->
       <div id="temporizadores" class="row mr-1">
-        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 p-1">
-          <div class="card p-1 card-size" >
-            <div class="input-group">
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 p-1"  id="card-0">
+          <div class="card p-1" >
+            <div class="input-group mt-2">
+              <button class="btn border-0 btn-sm mr-1 ml-1 btndelete" id="btndelete-0"><i class="ri-close-large-line"></i></button>
               <input type="text" id="nome-0" value="" placeholder="Nome da sua vila" class="font-weight-bold form-control form-control-sm nome-input">
               <div class="input-group-append">
-                <button class="btn btn-secondary btn-sm lock" data-id="0"><i class="ri-lock-unlock-line"></i></button>
+                <button class="btn btn-secondary btn-sm lock mr-2" data-id="0"><i class="ri-lock-unlock-line"></i></button>
               </div>
             </div>
             
-            <div class="row align-items-center text-dark mx-auto align-items-center">
+            <div class="row text-dark mx-auto">
               <div class="agrupar">
                   <div class="form-group">
                     <p class="font-weight-bold m-1 small-text"> D</p>
@@ -139,10 +123,10 @@
       </div>
       <!-- FIM TEMPORIZADORES-->
       <!-- FIM CONTAINER -->
-     <footer class="fixed-bottom" style="clear: both"> &copy; Todos os direitos reservados. </footer>
     </div>
     </div>
-    <!-- FIM CONTAINER -->
+     <!--<footer class="" style="clear: both;"> &copy; Todos os direitos reservados. </footer>
+    FIM CONTAINER -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

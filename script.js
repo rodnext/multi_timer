@@ -6,13 +6,13 @@ let timerValues = {};
 $('#add-temporizador').on("click", function () {
   idTemporizador++;
   let html = `
-
-        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 p-1">
-          <div class="card p-1 card-size" >
-            <div class="input-group">
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 p-1"  id="card-0">
+          <div class="card p-1" >
+            <div class="input-group mt-2">
+              <button class="btn border-0 btn-sm mr-1 ml-1 btndelete" id="btndelete-${idTemporizador}"><i class="ri-close-large-line"></i></button>
               <input type="text" id="nome-${idTemporizador}" value="" placeholder="Nome da sua vila" class="font-weight-bold form-control form-control-sm nome-input">
               <div class="input-group-append">
-                <button class="btn btn-secondary btn-sm lock" data-id="${idTemporizador}"><i class="ri-lock-unlock-line"></i></button>
+                <button class="btn btn-secondary btn-sm lock mr-2" data-id="${idTemporizador}"><i class="ri-lock-unlock-line"></i></button>
               </div>
             </div>
             
@@ -60,7 +60,6 @@ $('#add-temporizador').on("click", function () {
               </div>
             </div>
           </div>
-
   `;
   $('#temporizadores').append(html);
 });
@@ -148,6 +147,10 @@ $(document).on('click', '[id^="parar-"]', function() {
   $(`#parar-${id}`).hide();
 });
 
+$(document).on('click', '.btndelete', function() {
+  $(this).closest('.col-xl-3').remove();
+});
+
 //Ordena os cards por ordem de menor tempo no temporizador de cada um
 $('#ordenar-tempo').on('click', function() {
   const temporizadores = [];
@@ -191,5 +194,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Verifica o tamanho da janela ao carregar a página
   checkWindowSize();
-});
 
+
+  
+  darkModeToggle.addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+    var icon = darkModeToggle.querySelector("i");
+    var cards = document.querySelectorAll('.card');
+    var sidebar = document.querySelectorAll('.sidebar');
+      cards.forEach(function(card) {
+        card.classList.toggle('dark-mode');
+    });
+      sidebar.forEach(function(sidebar) {
+        sidebar.classList.toggle('dark-mode');
+    });
+    if (document.body.classList.contains("dark-mode")) {
+      icon.classList.remove("ri-moon-line");
+      icon.classList.add("ri-sun-line");
+    } else {
+      icon.classList.remove("ri-sun-line");
+      icon.classList.add("ri-moon-line");
+    }
+  });
+});
