@@ -63,8 +63,6 @@ $('#add-temporizador').on("click", function () {
   `;
   $('#temporizadores').append(html);
 });
-
-
 //Quando clicado trava o botão de nome da vila
 $(document).on('click', '.lock', function() {
   let id = $(this).data('id');
@@ -199,6 +197,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   darkModeToggle.addEventListener("click", function() {
     document.body.classList.toggle("dark-mode");
+    document.querySelector('.content').classList.toggle('dark-mode');
     var icon = darkModeToggle.querySelector("i");
     var cards = document.querySelectorAll('.card');
     var sidebar = document.querySelectorAll('.sidebar');
