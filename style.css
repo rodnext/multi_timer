@@ -142,7 +142,8 @@ body {
 .agrupar {
   justify-content: space-between;
   min-width: 40px;
-  padding: 1px 0 0 1px;
+  padding: 0;
+  margin: 0;
 }
 .agrupar input {
   min-width: 4vh;
@@ -168,10 +169,8 @@ input[type="number"] {
   font-weight: bold;
 }
 .form-group {
-  margin-bottom: 15px;
-}
-.mais {
-  margin: 30px 1px 50px 1px;
+  padding: 0 auto;
+  margin: 0 auto;
 }
 .btn-hamburguer{
   background: #a3bd8c;
@@ -329,5 +328,4 @@ html.dark-mode, body.dark-mode, .content.dark-mode{
   color: white;
   border-color: #4e0000;
 }
-
 /*--------------DARK MODE-------------*/

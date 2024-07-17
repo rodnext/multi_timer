@@ -52,73 +52,28 @@
       <!-- FIM INICIO HEADER-->
     <div class="content p-4">
       <!-- BOTAO DE ADICIONAR MAIS CARDS E ORGANIZAR VILAS-->
-      <div class="d-flex row mt-2 col-md-6">
-        <div class="">
+      <div class="d-flex mx auto mt-2 col-md-12">
           <button type="button" class="btn btn-new-timer btn-sm ml-1 mb-1" id="add-temporizador">
             <i class="ri-add-line"></i> Adicionar novo cronometro
-          </button>
+          </button><!--
           <button class="btn btn-ordem-timer btn-sm ml-1 mb-1" id="ordenar-tempo">
             Organizar vilas <i class="ri-list-ordered-2"></i>
-          </button>
-        </div>
+          </button>-->
+          <div class="dropdown mb-1 ml-2">
+            <button class="btn btn-ordem-timer btn-sm dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Filtrar por
+            </button>
+            <div class="dropdown-menu p-0" aria-labelledby="filterDropdown">
+              <a class="dropdown-item btn-ordem-timer" href="#" data-filter="1">Vila principal</a>
+              <a class="dropdown-item btn-ordem-timer" href="#" data-filter="2">Laboratório</a>
+              <a class="dropdown-item btn-ordem-timer" href="#" data-filter="3">Casa de Animais</a>
+              <a class="dropdown-item btn-ordem-timer" href="#" data-filter="4">Base do Construtor</a>
+            </div>
+          </div>
       </div>
       <!-- FIM DO BOTAO DE ADICIONAR MAIS CARDS E ORGANIZAR VILAS-->
       <!-- INICIO TEMPORIZADORES-->
       <div id="temporizadores" class="row mr-1">
-        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 p-1"  id="card-0">
-          <div class="card p-1" >
-            <div class="input-group mt-2">
-              <button class="btn border-0 btn-sm mr-1 ml-1 btndelete" id="btndelete-0"><i class="ri-close-large-line"></i></button>
-              <input type="text" id="nome-0" value="" placeholder="Nome da sua vila" class="font-weight-bold form-control form-control-sm nome-input">
-              <div class="input-group-append">
-                <button class="btn btn-secondary btn-sm lock mr-2" data-id="0"><i class="ri-lock-unlock-line"></i></button>
-              </div>
-            </div>
-            
-            <div class="row text-dark mx-auto">
-              <div class="agrupar">
-                  <div class="form-group">
-                    <p class="font-weight-bold m-1 small-text"> D</p>
-                  <input type="number" id="dias-0" value="0" min="0" placeholder="DD" class="form-control tempo-input larger-input" oninput="validateInput(this, 30)">
-                </div>
-              </div>
-
-              <div class="agrupar">
-                  <div  class="form-group">
-                    <p class="font-weight-bold m-1 small-text"> H</p>
-                  <input type="number" id="horas-0" value="0" min="0" max="23" placeholder="HH" class="form-control tempo-input larger-input" oninput="validateInput(this, 24)">
-                </div>
-              </div>
-
-              <div class="agrupar">
-                  <div class="form-group">
-                    <p class="font-weight-bold m-1 small-text"> M</p>
-                  <input type="number" id="minutos-0" value="0" min="0" max="59" placeholder="MM" class="form-control tempo-input larger-input" oninput="validateInput(this, 60)">
-                </div>
-              </div>
-              <div class="agrupar">
-                  <div  class="form-group">
-                    <p class="font-weight-bold m-1 small-text"> S</p>
-                  <input type="number" id="segundos-0" value="0" min="0" max="59" placeholder="SS" class="form-control tempo-input larger-input" oninput="validateInput(this, 60)">
-                </div>
-              </div>
-
-                <div class="agrupar-botao btn-group mt-1 justify-content-center" >
-
-                  <div  class="form-group" id="iniciar-0">
-                    <p class="font-weight-bold mb-1 small-text">Iniciar</p>
-                    <button class="font-weight-bold btn btn-warning btn-sm rounded-circle"><i class="ri-play-fill"></i></button>
-                  </div>
-
-                  <div class="form-group" id="parar-0" style="display: none;">
-                    <p class="font-weight-bold mb-1 small-text">Parar</p>
-                    <button class="font-weight-bold btn btn-danger btn-sm rounded-circle"><i class="ri-stop-fill"></i></button>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
         <!-- CADA TEMPORIZADOR APARECERÁ AQUI-->
       </div>
       <!-- FIM TEMPORIZADORES-->
