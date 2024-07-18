@@ -65,16 +65,16 @@ $('#add-temporizador').on("click", function () {
             ${createTimerHTML(idTemporizador, 1)}
           <p class="m-0 mt-1  p-0">Laboratório</p>
             ${createTimerHTML(idTemporizador, 2)}
-          <p class="m-0 mt-1  p-0">Casa de Animais</p>
+          <p class="m-0 mt-1  p-0">Casa do construtor</p>
             ${createTimerHTML(idTemporizador, 3)}
-          <p class="m-0 mt-1  p-0">Base do Construtor</p>
-            ${createTimerHTML(idTemporizador, 4)}
 
           </div>
         </div>
   `;
   $('#temporizadores').append(html);
 });
+//<p class="m-0 mt-1  p-0">Base do Construtor</p>
+ // ${createTimerHTML(idTemporizador, 4)}
 
 function createTimerHTML(id, timerId) {
   return `
