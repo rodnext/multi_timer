@@ -1,5 +1,7 @@
 let idTemporizador = 0;
 let temporizadores = [];
+let nomesPredefinidos = ["ROD", "N E X T", "Gedson", "éotaldeLeo 3.0", "éoCleoKRL II", "RodClash1", "RodClash2", "RodClash3", "RodClash4", "RodClash6", "Rogério", "Captain", "Rodnet", "DJ Roger"];
+let nomesUsados = [];
 
 document.addEventListener("DOMContentLoaded", function() {
   const sidebar = document.getElementById("sidebar");
@@ -50,12 +52,22 @@ document.addEventListener("DOMContentLoaded", function() {
 $(document).ready(function() {
 $('#add-temporizador').on("click", function () {
   idTemporizador++;
+  
+  // Seleciona um nome da lista predefinida
+  let nomeTemporizador = nomesPredefinidos[0];
+  if (nomesUsados.length < nomesPredefinidos.length) {
+    nomeTemporizador = nomesPredefinidos[nomesUsados.length];
+    nomesUsados.push(nomeTemporizador);
+  } else {
+    nomeTemporizador = `Aldeia ${idTemporizador}`;
+  }
+
   let html = `
         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 p-1" id="card-${idTemporizador}"  data-id="${idTemporizador}">
           <div class="card p-1 pb-3">
             <div class="input-group mt-1 mb-2 border-bottom">
               <button class="btn border-0 btn-sm mr-1 ml-1 btndelete" id="btndelete-${idTemporizador}"><i class="ri-close-large-line"></i></button>
-              <input type="text" id="nome-${idTemporizador}" value="" placeholder="Nome da sua vila" class="font-weight-bold form-control form-control-sm nome-input">
+              <input type="text" id="nome-${idTemporizador}" value="${nomeTemporizador}" placeholder="Nome da sua vila" class="font-weight-bold form-control form-control-sm nome-input">
               <div class="input-group-append">
                 <button class="btn btn-secondary btn-sm lock mr-2" data-id="${idTemporizador}"><i class="ri-lock-unlock-line"></i></button>
               </div>
@@ -71,10 +83,6 @@ $('#add-temporizador').on("click", function () {
 });
 //<p class="m-0 mt-1  p-0">Base do Construtor</p>
  // ${createTimerHTML(idTemporizador, 4)}
-          /*<p class="m-0 mt-1  p-0">Laboratório</p>
-            ${createTimerHTML(idTemporizador, 2)}
-          <p class="m-0 mt-1  p-0">Casa do construtor</p>
-            ${createTimerHTML(idTemporizador, 3)}*/
 
 function createTimerHTML(id, timerId) {
   return `
