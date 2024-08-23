@@ -63,10 +63,6 @@ $('#add-temporizador').on("click", function () {
             
           <p class="m-0 p-0">Vila principal</p>
             ${createTimerHTML(idTemporizador, 1)}
-          <p class="m-0 mt-1  p-0">Laboratório</p>
-            ${createTimerHTML(idTemporizador, 2)}
-          <p class="m-0 mt-1  p-0">Casa do construtor</p>
-            ${createTimerHTML(idTemporizador, 3)}
 
           </div>
         </div>
@@ -75,6 +71,10 @@ $('#add-temporizador').on("click", function () {
 });
 //<p class="m-0 mt-1  p-0">Base do Construtor</p>
  // ${createTimerHTML(idTemporizador, 4)}
+          /*<p class="m-0 mt-1  p-0">Laboratório</p>
+            ${createTimerHTML(idTemporizador, 2)}
+          <p class="m-0 mt-1  p-0">Casa do construtor</p>
+            ${createTimerHTML(idTemporizador, 3)}*/
 
 function createTimerHTML(id, timerId) {
   return `
