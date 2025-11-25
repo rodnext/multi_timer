@@ -18,3 +18,5 @@ __Contribuição:__
 Licença:
 Este é um projeto pessoal.
 dedico todos os direitos ao jogo Clash of Clans.
+
+https://rodnext.github.io/multi_timer/
